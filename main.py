@@ -2,22 +2,22 @@ import speech_recognition as sr
 import pyttsx3
 from datetime import datetime
 
-# Metin okuma motoru
+
 engine = pyttsx3.init()
 
 def speak(text):
-    print("Bot:", text)  # Konsola da yazdır
+    print("Bot:", text)  
     engine.say(text)
     engine.runAndWait()
 
-# Ses tanıma motoru
+
 recognizer = sr.Recognizer()
 
 def listen():
     with sr.Microphone() as source:
         print("Dinliyor... (Konuşun!)")
-        recognizer.adjust_for_ambient_noise(source)  # Gürültüyü filtrele
-        audio = recognizer.listen(source, timeout=None,phrase_time_limit=10)  # 5 saniye timeout
+        recognizer.adjust_for_ambient_noise(source)  
+        audio = recognizer.listen(source, timeout=None,phrase_time_limit=10)  
 
         try:
             command = recognizer.recognize_google(audio, language="tr-TR")
